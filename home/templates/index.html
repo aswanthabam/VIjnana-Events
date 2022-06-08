@@ -64,6 +64,7 @@
 			.cont
 			{
 				height: 50%;
+				overflow: scroll;
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -149,11 +150,22 @@
 			</div>
 			<div class="cont">
 				<div class="main">
-					<center>
-						<span class="info">Enter the code for next clue</span>
-					<input type="text" name="number" id="number" value="" placeholder="Enter code"/>
-					<button name="Go" id="Go" value="Go" onclick="Go()">GO</button>
-					</center>
+				<center>
+				{% if post %}
+					{% if valid %}
+					 {{ message.text | safe }}
+					{% else %}
+					{{ message.text | safe }}
+					{% endif %}
+				{% else %}
+					<span class="info">Enter the code for next clue</span>
+					<form class="forn" action="" method="post" accept-charset="utf-8">
+						{% csrf_token %}
+						<input type="text" name="code" id="number" value="" placeholder="Enter code"/>
+						<button name="Go" id="Go" value="Go" onclick="Go()">GO</button>
+					</form>
+				{% endif %}
+				</center>
 				</div>
 			</div>
 			<div class="footer">
