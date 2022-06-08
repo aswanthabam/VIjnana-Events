@@ -6,6 +6,16 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1.0;user-scalable=no"/>
 		<title>Treasure Hunt</title>
 		<style>
+			@keyframes anim
+			{
+				0%{
+					height: 0%;
+				}
+				100%
+				{
+					height: 50%;
+				}
+			}
 			body
 			{
 				width: calc(100vw - 10px);
@@ -73,6 +83,8 @@
 				width: calc(100% - 26px);
 				border-radius: 10px;
 				box-shadow: 10px 10px 30px #a4a4a473;
+				transition: all 0.5s ease;
+				animation: anim 1.5s;
 			}
 			.top
 			{
