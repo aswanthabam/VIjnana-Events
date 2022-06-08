@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0;"/>
+		<title>Treasure Hunt</title>
+		<style>
+			body
+			{
+				width: 100%;
+				height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: url({% static 'treasure.png' %});
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+			input
+			{
+				width: 100%;
+				margin: 10px;
+				width: calc(100% - 20px);
+				margin: 10px;
+				height: 50px;
+				background: #fff;
+				border: 1px solid #787878;
+				border-radius: 5px;
+				padding-left: 5px;
+			}
+			button
+			{
+				width: 50%;
+				background: #00ccff;
+				color: #fff;
+				outline: none;
+				border: 1px solid #787878;
+				border-radius: 5px;
+				height: 50px;
+				font-size: 20px;
+				font-weight: 900;
+			}
+			.main
+			{
+				margin: 10px;
+				width: calc(100% - 20px);
+				height: auto;
+			}
+			.container
+			{
+				width: 100%;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				position: fixed;
+				top: 0px;
+				left: 0px;
+				right: 0px;
+				bottom: 0px;
+				background: #00000080;
+			}
+			.cont
+			{
+				height: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: #faffaf;
+				margin: 13px;
+				width: calc(100% - 26px);
+				border-radius: 10px;
+				box-shadow: 10px 10px 30px #a4a4a473;
+			}
+			.top
+			{
+				width: 100%;
+				position: fixed;
+				top: 5px;
+				left: 0px;
+				right: 0px;
+				
+			}
+			.name
+			{
+				font-weight: 800;
+				color: #fff;
+				font-size: 20px;
+				
+			}
+			.club
+			{
+				
+			}
+			.head
+			{
+				font-family: Monospace;
+				font-weight: 500;
+				margin-top: 25px;
+				font-size: 30px;
+				background: -webkit-linear-gradient(#f1ff23,#00aeb3);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				-webkit-text-stroke: 1px white;
+			}
+			.footer
+			{
+				position: absolute;
+				bottom: 5px;
+				left: 0px;
+				right: 0px;
+				width: 100%;
+				text-align: center;
+			}
+			.logo
+			{
+				width: 50px;
+				height: 50px;
+				text-align: center;
+			}
+			.credit
+			{
+				font-size: 10px;
+			}
+			.note
+			{
+				font-size: 10px;
+			}
+			.info
+			{
+				color: #000;
+				font-weight: 900;
+			}
+			span
+			{
+				color: #fff;
+				display: block;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="top">
+				<span class="name">GOVT. COLLEGE THALASSERY</span>
+				<span class="club">Artificial Intelligence Club</span>
+				<span class="head">TREASURE HUNT</span>
+			</div>
+			<div class="cont">
+				<div class="main">
+					<center>
+						<span class="info">Enter the code for next clue</span>
+					<input type="text" name="number" id="number" value="" placeholder="Enter code"/>
+					<button name="Go" id="Go" value="Go" onclick="Go()">GO</button>
+					</center>
+				</div>
+			</div>
+			<div class="footer">
+				<img class="logo" src="{% static 'logo.png' %}" alt="College Logo"/>
+				<span class="note">This page is better viewed in Chrome</span>
+				<span class="credit">©AI CLUB, GCT<br/>
+				Contact : 0000000</span>
+			</div>
+		</div>
+	</body>
+</html>
