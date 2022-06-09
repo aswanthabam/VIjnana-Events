@@ -14,9 +14,19 @@ def index(request):
 		post = request.POST
 		code = post["code"]
 		team_id = post["team_id"]
+		
 		try:
 			team = Team.objects.filter(team_id=team_id)[0]
-			next_task = team.team_id + 1;
+			next_task = team.progress + 1;
+			all_task = Task.objects.all()
+			if next_task > len(all_task):
+				db["post"] = True
+				db["valid"] = False
+				db["message"]["text"] = """
+				<span class="info">Games finished. Please contact event organizers for next task 🤗</span>
+				<br/><a href=""><button>Try again</button></a>
+				"""
+				return render(request,"index.html",db)
 			next_task = Task.objects.filter(order=next_task)[0]
 			
 		except:
@@ -40,7 +50,7 @@ def index(request):
 		else:
 			try:
 				obj = objs[0]
-				if obj.order != next_task.order:
+				if obj.order > next_task.order:
 					db["post"] = True
 					db["valid"] = False
 					db["message"]["text"] = """
@@ -48,6 +58,12 @@ def index(request):
 					<br/><a href=""><button>Try again</button></a>
 					"""
 					return render(request,"index.html",db)
+				db["post"] = True
+				db["valid"] = True
+				db["message"]["text"] = obj.hint_html
+				team.progress += 1
+				team.save()
+				return render(request,"index.html",db)
 			except:
 				db["post"] = True
 				db["valid"] = False

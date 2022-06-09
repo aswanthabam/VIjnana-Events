@@ -4,7 +4,7 @@ from django.db import models
 class Team(models.Model):
 	team_id = models.TextField(default=None,unique=True,blank=False,null=False)
 	members = models.TextField(default=None,unique=True,blank=False,null=False)
-	progress = models.IntegerField(default=None,blank=False,null=False)
+	progress = models.IntegerField(default=0,blank=False,null=False)
 	
 class Task(models.Model):
 	order = models.IntegerField(default=None,unique=True,blank=False,null=False)
