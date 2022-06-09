@@ -180,8 +180,8 @@
 					<span class="info">Enter the code for next clue</span>
 					<form class="forn" action="" method="post" accept-charset="utf-8" autocomplete="off">
 						{% csrf_token %}
-						<input type="text" name="team_id" id="number" value="" placeholder="Enter team code"/>
-						<input type="text" name="code" id="number" value="" placeholder="Enter code"/>
+						<input type="number" name="team_id" id="number" value="" placeholder="Enter team code"/>
+						<input type="number" name="code" id="number" value="" placeholder="Enter code"/>
 						<button name="Go" id="Go" value="Go" onclick="Go()">GO</button>
 					</form>
 				{% endif %}
