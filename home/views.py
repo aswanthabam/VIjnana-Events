@@ -61,7 +61,7 @@ def index(request):
 				db["post"] = True
 				db["valid"] = True
 				db["message"]["text"] = obj.hint_html
-				if obj.order == next_task.order -1:
+				if obj.order == next_task.order:
 					team.progress += 1
 				team.save()
 				return render(request,"index.html",db)
