@@ -13,6 +13,20 @@ def index(request):
 	if request.method == "POST":
 		post = request.POST
 		code = post["code"]
+		team_id = post["team_id"]
+		try:
+			team = Team.objects.filter(team_id=team_id)[0]
+			next_task = team.team_id + 1;
+			next_task = Task.objects.filter(order=next_task)[0]
+			
+		except:
+			db["post"] = True
+			db["valid"] = False
+			db["message"]["text"] = """
+			<span class="info">Wrong Team Code. Make sure you entered the correct code 🤗</span>
+			<br/><a href=""><button>Try again</button></a>
+			"""
+			return render(request,"index.html",db)
 		objs = Task.objects.filter(code=code)
 		if len(objs) < 1:
 			db["post"] = True
@@ -26,9 +40,14 @@ def index(request):
 		else:
 			try:
 				obj = objs[0]
-				db["post"] = True
-				db["valid"] = True
-				db["message"]["text"] = obj.hint_html
+				if obj.order != next_task.order:
+					db["post"] = True
+					db["valid"] = False
+					db["message"]["text"] = """
+					<span class="info">Oops. you skipped a level go back and complete the level. 🤗</span>
+					<br/><a href=""><button>Try again</button></a>
+					"""
+					return render(request,"index.html",db)
 			except:
 				db["post"] = True
 				db["valid"] = False
