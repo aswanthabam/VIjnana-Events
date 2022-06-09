@@ -30,7 +30,7 @@ def index(request):
 			next_task = Task.objects.filter(order=next_task)[0]
 			
 		except Exception as e:
-			print(e)
+			raise(e)
 			db["post"] = True
 			db["valid"] = False
 			db["message"]["text"] = """
