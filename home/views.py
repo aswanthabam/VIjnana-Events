@@ -19,7 +19,7 @@ def index(request):
 			team = Team.objects.filter(team_id=team_id)[0]
 			next_task = team.progress + 1;
 			all_task = Task.objects.all()
-			if next_task > len(all_task):
+			if next_task > len(all_task) and next_task != len(all_task):
 				db["post"] = True
 				db["valid"] = False
 				db["message"]["text"] = """
