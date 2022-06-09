@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from django.utils import timezone
 # Create your views here.
 
 def index(request):
@@ -82,6 +83,30 @@ def index(request):
 					if obj.order == next_task.order and not finished:
 						team.progress += 1
 						team.save()
+						# We also want to add the enter time of code
+						try:
+							# Find the game model of the team
+							game = Game.objects.filter(team=team)[0]
+							order = obj.order
+							time = timezone.now()
+							# check for which is the task or order and change the
+							# corresponding field of model eg model.one,model.two
+							if order == 1:game.one = time
+							elif order == 2:game.two = time
+							elif order == 3:game.three = time
+							elif order == 4:game.four = time
+							elif order == 5:game.five = time
+							elif order == 6:game.six = time
+							elif order == 7:game.seven = time
+							elif order == 8:game.eight = time
+							elif order == 9:game.nine = time
+							elif order == 10:game.ten = time
+							elif order == 11:game.eleven = time
+							elif order == 12:game.twelve = time
+							elif order == 13:game.twelve2 = time
+							else:pass
+							game.save()
+						except:pass
 					return render(request,"index.html",db)
 			except:
 				# Some error occured in the above code
