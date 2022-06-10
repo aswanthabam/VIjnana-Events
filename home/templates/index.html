@@ -16,6 +16,15 @@
 					height: 50%;
 				}
 			}
+			@keyframes grad
+			{
+				from{
+					filter: hue-rotate(0deg);
+				}
+				to{
+					filter: hue-rotate(330deg);
+				}
+			}
 			body
 			{
 				width: calc(100vw - 10px);
@@ -75,9 +84,9 @@
 			{
 				height: 50%;
 				overflow: scroll;
-				/*display: flex;
+				display: flex;
 				align-items: center;
-				justify-content: center;*/
+				justify-content: center;
 				background: #faffaf;
 				margin: 13px;
 				width: calc(100% - 26px);
@@ -112,10 +121,12 @@
 				font-weight: 500;
 				margin-top: 25px;
 				font-size: 30px;
-				background: -webkit-linear-gradient(#f1ff23,#00aeb3);
+				background: -webkit-linear-gradient(#ff3737,#00ff10);
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
 				-webkit-text-stroke: 1px white;
+				animation: grad 3s linear infinite;
+				
 			}
 			.footer
 			{
