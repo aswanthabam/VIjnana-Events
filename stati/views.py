@@ -42,6 +42,7 @@ def index(request):
 		except:pass
 		try:g["nine"] = datetime.strftime(x.nine, '%H:%M:%S')
 		except:pass
-		g["ten"] = date_string = datetime.strftime(x.ten, '%H:%M:%S')
+		try:g["ten"] = date_string = datetime.strftime(x.ten, '%H:%M:%S')
+		except:pass
 		game.append(g)
 	return render(request,"st.html",{"game":game})
