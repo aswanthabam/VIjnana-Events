@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width"/>
+		<title>Statitics</title>
+		<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	</head>
+	<body>
+Note : Server time is 5.5 hours backward
+<table class="table table-striped" border="1">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Canteen</th>
+      <th scope="col">Tank</th>
+      <th scope="col">Arch</th>
+      <th scope="col">Person</th>
+      <th scope="col">Hall</th>
+      <th scope="col">Cup Game</th>
+      <th scope="col">Baloon Game</th>
+      <th scope="col">Notice</th>
+      <th scope="col">Winner</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for x in game %}
+    <tr>
+      <td>{{x.team.team_id}}</td>
+      <td>{{x.one}}</td>
+      <td>{{x.two}}</td>
+      <td>{{x.three}}</td>
+      <td>{{x.four}}</td>
+      <td>{{x.five}}</td>
+      <td>{{x.six}}</td>
+      <td>{{x.seven}}</td>
+      <td>{{x.eight}}</td>
+      <td>{{x.nine}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+	</body>
+</html>
