@@ -24,23 +24,23 @@ def index(request):
 	i = 0
 	for x in games:
 		g["team"]["team_id"] = x.team.team_id
-		try:g["one"] = date_string = datetime.strftime(x.one, '%H:%M:%S')
+		try:g["one"] = datetime.strftime(x.one, '%H:%M:%S')
 		except:pass
-		try:g["two"] = date_string = datetime.strftime(x.two, '%H:%M:%S')
+		try:g["two"] = datetime.strftime(x.two, '%H:%M:%S')
 		except:pass
-		try:g["three"] = date_string = datetime.strftime(x.three, '%H:%M:%S')
+		try:g["three"] = datetime.strftime(x.three, '%H:%M:%S')
 		except:pass
-		try:g["four"] = date_string = datetime.strftime(x.four, '%H:%M:%S')
+		try:g["four"] = datetime.strftime(x.four, '%H:%M:%S')
 		except:pass
-		try:g["five"] = date_string = datetime.strftime(x.five, '%H:%M:%S')
+		try:g["five"] = datetime.strftime(x.five, '%H:%M:%S')
 		except:pass
-		try:g["six"] = date_string = datetime.strftime(x.six, '%H:%M:%S')
+		try:g["six"] = datetime.strftime(x.six, '%H:%M:%S')
 		except:pass
-		try:g["seven"] = date_string = datetime.strftime(x.seven, '%H:%M:%S')
+		try:g["seven"] = datetime.strftime(x.seven, '%H:%M:%S')
 		except:pass
-		try:g["eight"] = date_string = datetime.strftime(x.eight, '%H:%M:%S')
+		try:g["eight"] = datetime.strftime(x.eight, '%H:%M:%S')
 		except:pass
-		try:g["nine"] = date_string = datetime.strftime(x.nine, '%H:%M:%S')
+		try:g["nine"] = datetime.strftime(x.nine, '%H:%M:%S')
 		except:pass
 		g["ten"] = date_string = datetime.strftime(x.ten, '%H:%M:%S')
 		game.append(g)
