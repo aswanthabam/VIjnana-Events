@@ -6,23 +6,23 @@ from datetime import datetime
 def index(request):
 	games = Game.objects.all()
 	game = []
-	g = {
-		"team":{
-			"team_id":"",
-		},
-		"one":"",
-		"two":"",
-		"three":"",
-		"four":"",
-		"five":"",
-		"six":"",
-		"seven":"",
-		"eight":"",
-		"nine":"",
-		"ten":"",
-	}
-	i = 0
+	
 	for x in games:
+		g = {
+			"team":{
+				"team_id":"",
+			},
+			"one":"",
+			"two":"",
+			"three":"",
+			"four":"",
+			"five":"",
+			"six":"",
+			"seven":"",
+			"eight":"",
+			"nine":"",
+			"ten":"",
+		}
 		g["team"]["team_id"] = x.team.team_id
 		try:g["one"] = datetime.strftime(x.one, '%H:%M:%S')
 		except:pass
@@ -42,7 +42,7 @@ def index(request):
 		except:pass
 		try:g["nine"] = datetime.strftime(x.nine, '%H:%M:%S')
 		except:pass
-		try:g["ten"] = date_string = datetime.strftime(x.ten, '%H:%M:%S')
+		try:g["ten"] = datetime.strftime(x.ten, '%H:%M:%S')
 		except:pass
 		game.append(g)
 	return render(request,"st.html",{"game":game})
