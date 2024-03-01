@@ -49,7 +49,7 @@ TEMPLATES = [
     }
 ]
 
-WSGI_APPLICATION = "hunt.wsgi.application"
+WSGI_APPLICATION = "hunt.wsgi.app"
 
 
 DATABASES = {
