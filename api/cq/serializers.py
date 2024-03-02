@@ -23,7 +23,7 @@ class ParticipantCreateSerializer(serializers.Serializer):
 
 class QuestionSerializer(serializers.Serializer):
     order = serializers.IntegerField(read_only=True)
-    answer = serializers.CharField(required=True)
+    answer = serializers.CharField(required=True, write_only=True)
     question = serializers.CharField(required=True)
     name = serializers.CharField(required=True)
     difficulty = serializers.IntegerField(required=True)
@@ -40,3 +40,4 @@ class QuestionSerializer(serializers.Serializer):
             'answer'
         ]
         model = Level
+        WRITE_ONLY_FIELDS = ['answer']
