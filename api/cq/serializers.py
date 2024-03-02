@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from db.models import Participant
+from db.models import Participant, Level
 
 class ParticipantCreateSerializer(serializers.Serializer):
     current_order = serializers.IntegerField(read_only=True)
@@ -20,3 +20,23 @@ class ParticipantCreateSerializer(serializers.Serializer):
             'participantId'
         ]
         model = Participant
+
+class QuestionSerializer(serializers.Serializer):
+    order = serializers.IntegerField(read_only=True)
+    answer = serializers.CharField(required=True)
+    question = serializers.CharField(required=True)
+    name = serializers.CharField(required=True)
+    difficulty = serializers.IntegerField(required=True)
+
+    def create(self, validated_data):
+        validated_data['order'] = Level.objects.all().count() + 1
+        return Level.objects.create(**validated_data)
+    class Meta:
+        fields = [
+            'order',
+            'name',
+            'question',
+            'difficulty',
+            'answer'
+        ]
+        model = Level
