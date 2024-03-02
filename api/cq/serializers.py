@@ -4,7 +4,7 @@ from db.models import Participant, Level
 class ParticipantCreateSerializer(serializers.Serializer):
     current_order = serializers.IntegerField(read_only=True)
     participantId = serializers.IntegerField(read_only=True)
-
+    name = serializers.CharField(required=True)
     def create(self, validated_data):
         p_id = Participant.objects.all().order_by('participantId').last()
         if p_id:
@@ -16,6 +16,7 @@ class ParticipantCreateSerializer(serializers.Serializer):
         return Participant.objects.create(**validated_data)
     class Meta:
         fields =[
+            'name',
             'current_order',
             'participantId'
         ]
