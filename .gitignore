@@ -7,3 +7,4 @@ db.sqlite3
 getting-started/*
 migrations
 __pycache__
+.vercel
