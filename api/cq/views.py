@@ -1,7 +1,23 @@
 from rest_framework.views import APIView
 from utils.response import CustomResponse
-from .serializers import ParticipantCreateSerializer, QuestionSerializer
+from .serializers import ParticipantCreateSerializer, QuestionSerializer,SubmissionSerializer
 from db.models import Participant, Level, Submission
+from django.db.models import Count, F
+class LeaderboardView(APIView):
+    def get(self, request):
+        subs = Submission.objects.all().order_by('-level','time')
+        data = []
+        ids = []
+        for sub in subs:
+            if sub.is_correct and sub.participantId.participantId not in ids:
+                data.append({
+                    "participantId":sub.participantId.participantId,
+                    "name":sub.participantId.name,
+                    "level":sub.level,
+                    "time":sub.time,
+                })
+                ids.append(sub.participantId.participantId)
+        return CustomResponse(message="Leaderboard fetched successfully.", data=data).send_success_response()
 class InitializationView(APIView):
     def post(self, request):
         serializer = ParticipantCreateSerializer(data=request.data)

@@ -1,5 +1,20 @@
 from rest_framework import serializers
-from db.models import Participant, Level
+from db.models import Participant, Level, Submission
+
+class SubmissionSerializer(serializers.ModelSerializer):
+    # name = serializers.CharField(read_only=True, source='participantId.name')
+    level = serializers.IntegerField(required=True)
+    time = serializers.DateTimeField(read_only=True)
+    is_correct = serializers.BooleanField(read_only=True)
+    
+    class Meta:
+        fields = [
+            # 'name',
+            'level',
+            'time',
+            'is_correct'
+        ]
+        model = Submission
 
 class ParticipantCreateSerializer(serializers.Serializer):
     current_order = serializers.IntegerField(read_only=True)
