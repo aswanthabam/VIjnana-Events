@@ -14,7 +14,7 @@ class Participant(models.Model):
 
 class Submission(models.Model):
     submissionId = models.CharField(null=False, blank=False, unique=True, primary_key=True,default=uuid4, max_length=100)
-    participantId = models.ForeignKey(Participant, on_delete=models.CASCADE)
+    participantId = models.ForeignKey(Participant, on_delete=models.CASCADE, related_name='submission_participantId')
     level = models.IntegerField(null=False, blank=False)
     value = models.TextField(null=False, blank=False)
     time = models.DateTimeField(null=False, blank=False, auto_now_add=True)
