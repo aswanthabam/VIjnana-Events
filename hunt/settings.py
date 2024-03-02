@@ -1,14 +1,20 @@
 import os
+from pathlib import Path
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from dotenv import load_dotenv
 
-SECRET_KEY = "CHANGE_ME!!!! (P.S. the SECRET_KEY environment variable will be used, if set, instead)."
+load_dotenv(override=True)
 
-DEBUG = True
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURE_SSL_REDIRECT = True
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-token')
+
+DEBUG = True if os.environ.get('DEBUG','True') == 'True' else False
 
 ALLOWED_HOSTS = ["*"]
+
+
+# Application definition
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -51,16 +57,29 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "hunt.wsgi.app"
 
-
-DATABASES = {
-    "default": {
-        "ENGINE" : "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3")
-    }
+if os.environ.get('DB_ENGINE', 'django.db.backends.postgresql') == 'djongo':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'djongo',
+            'NAME': os.environ.get('DB_NAME', 'votechain'),
+            'ENFORCE_SCHEMA': False,
+            'CLIENT': {
+                'host': os.environ.get('DB_URL', 'mongodb://localhost:27017/'),
+            }  
+        }
 }
-
-# Password validation
-# https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': os.environ.get('DB_ENGINE', 'django.db.backends.postgresql'),
+            'NAME': os.environ.get('DB_NAME', 'votechain'),
+            'USER': os.environ.get('DB_USER', 'postgres'),
+            'PASSWORD': os.environ.get('DB_PASSWORD', 'postgres'),
+            'HOST': os.environ.get('DB_HOST', 'localhost'),
+            'PORT': os.environ.get('DB_PORT', '5432')
+        }
+    }
+print(DATABASES)
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -72,9 +91,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/2.0/topics/i18n/
-
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "UTC"
@@ -85,11 +101,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.0/howto/static-files/
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = "/static/"
-
-# django_heroku.settings(locals())
+# STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+STATIC_URL = '/static/'
