@@ -19,3 +19,22 @@ class Submission(models.Model):
     value = models.TextField(null=False, blank=False)
     time = models.DateTimeField(null=False, blank=False, auto_now_add=True)
     is_correct = models.BooleanField(null=False, blank=False)
+class THLevel(models.Model):
+    order = models.IntegerField(null=False, blank=False, unique=True, primary_key=True)
+    name = models.CharField(null=False, blank=False, max_length=100, unique=True)
+    question = models.TextField(null=False, blank=False, unique=True)
+    answer = models.TextField(null=False, blank=False,unique=True)
+    difficulty = models.IntegerField(null=False, blank=False)
+
+class THParticipant(models.Model):
+    participantId = models.IntegerField(null=False, blank=False, unique=True,primary_key=True)
+    name = models.CharField(null=False, blank=False, max_length=100)
+    current_order = models.IntegerField(null=False, blank=False)
+
+class THSubmission(models.Model):
+    submissionId = models.CharField(null=False, blank=False, unique=True, primary_key=True,default=uuid4, max_length=100)
+    participantId = models.ForeignKey(THParticipant, on_delete=models.CASCADE, related_name='th_submission_participantId')
+    level = models.IntegerField(null=False, blank=False)
+    value = models.TextField(null=False, blank=False)
+    time = models.DateTimeField(null=False, blank=False, auto_now_add=True)
+    is_correct = models.BooleanField(null=False, blank=False)
