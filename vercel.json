@@ -1,7 +1,7 @@
 {
   "builds": [
     {
-      "src": "hunt/wsgi.py",
+      "src": "vijnanaevents/wsgi.py",
       "use": "@vercel/python",
       "config": {
         "runtime": "python3.9",
@@ -22,7 +22,7 @@
   },
     {
       "src": "/(.*)",
-      "dest": "hunt/wsgi.py"
+      "dest": "vijnanaevents/wsgi.py"
     }
   ],
   "regions": ["bom1"]
