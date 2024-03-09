@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     "rest_framework",
     'corsheaders',
     "home",
-    "stati",
+    "statistics",
     "db",
     "api"
 ]
@@ -42,7 +42,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS= True
-ROOT_URLCONF = "hunt.urls"
+ROOT_URLCONF = "vijnanaevents.urls"
 
 TEMPLATES = [
     {
@@ -60,7 +60,7 @@ TEMPLATES = [
     }
 ]
 
-WSGI_APPLICATION = "hunt.wsgi.app"
+WSGI_APPLICATION = "vijnanaevents.wsgi.app"
 
 if os.environ.get('DB_ENGINE', 'django.db.backends.postgresql') == 'djongo':
     DATABASES = {
@@ -84,7 +84,6 @@ else:
             'PORT': os.environ.get('DB_PORT', '5432')
         }
     }
-print(DATABASES)
 
 AUTH_PASSWORD_VALIDATORS = [
     {

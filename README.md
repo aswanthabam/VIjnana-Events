@@ -1,12 +1,11 @@
-# Treasure Tracker
+# Vijnana Events
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+This website is used for managing events in Vijnana'24(Treasure Hunt, Crypta Quest etc.) Our tech fest have events that requires a website that manages the event, like for treasure hunt, we need a website that will give the next clue for participant. also the [Crypta Quest](https://github.com/aswanthabam/Crypta-Quest-Problems) event the next problem is given using this website.
 
-A website developed for conducting Treasure Hunt at GCT.
+> Hosted on : https://gct-treasurehunt.vercel.app/
 
-### Features 
+> The old website that only manages the treasure hunt is moved to https://gct-treasurehunt.vercel.app/v1/
 
-- Option to enter their id
-- Shows the next step they want to do
-- Enter codes they found out, and get their next hint. 
-- Ensures the participants follows the correct flow.
+> Treasure Hunt URL : https://vijnana.web.app/th
+
+> CryptaQuest URL : https://vijnana.web.app/cq
